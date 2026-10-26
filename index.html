@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANDA TOURS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --accent: #FF8C00;
+            --dark: #0a0a0a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark);
+            color: #f0f0f0;
+            line-height: 1.7;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.96);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            padding: 0.9rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-container img {
+            height: 52px;               /* Logo height - you can change this */
+            width: auto;
+            object-fit: contain;
+        }
+        .logo-text {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: white;
+        }
+        .nav-links a {
+            color: white;
+            margin: 0 14px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        .cta-nav {
+            background: var(--accent);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        /* Reduced hero height */
+        .hero {
+            height: 70vh;                /* Reduced from 100vh */
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), 
+                        url('https://source.unsplash.com/random/1920x1080/?kenya-safari') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 70px;
+        }
+        .hero-content {
+            max-width: 850px;
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 15px 38px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 140, 0, 0.4);
+        }
+        .section { 
+            padding: 80px 5%; 
+        }
+        .section-title { 
+            font-size: 2.6rem; 
+            color: var(--accent); 
+            margin-bottom: 2.5rem; 
+            text-align: center; 
+        }
+        .destinations-grid, .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+        .dest-card, .gallery-item {
+            border-radius: 14px;
+            overflow: hidden;
+            background: #1a1a1a;
+            transition: transform 0.3s;
+        }
+        .dest-card:hover, .gallery-item:hover {
+            transform: translateY(-7px);
+        }
+        .dest-card img, .gallery-item img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+        .dest-info {
+            padding: 18px;
+        }
+        .dest-info h3 {
+            color: var(--accent);
+            margin-bottom: 6px;
+            font-size: 1.25rem;
+        }
+        .dest-info p {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            left: 28px;
+            z-index: 9999;
+        }
+        .whatsapp-float a {
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.3rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.55);
+            transition: transform 0.3s;
+        }
+        .whatsapp-float a:hover {
+            transform: scale(1.1);
+        }
+        @media (max-width: 768px) {
+            .hero { height: 60vh; }
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .logo-text { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <!-- ========== LOGO - ========== -->
+            <img src="attachments/panda-logo.jpg.jpeg" alt="Panda Tours Logo">
+            <span class="logo-text">PANDA TOURS</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#destinations">Destinations</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#about">About</a>
+            <a href="#book" class="cta-nav">Book Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+
+    <section id="home" class="hero">
+        
+        <div class="hero-content">
+            <h1>RISE. EXPLORE. REPEAT.</h1>
+            <p>Epic Rift Valley adventures for the young & fearless.<br>
+            From majestic lakes to volcanic craters and historic castles unlock all the adventures with Panda Adventures.</p>
+
+            <a href="#book" class="btn-primary">BOOK YOUR ADVENTURE NOW</a>
+        </div>
+    </section>
+
+    <!-- Destinations -->
+
+    <section id="destinations" class="section">
+        <h2 class="section-title">OUR DESTINATIONS</h2>
+        <div class="destinations-grid">
+            <div class="dest-card">
+                <img src="attachments/lake bogoria.jpg.jpeg" alt="Lake Bogoria">
+                <div class="dest-info">
+                    <h3>LAKE BOGORIA</h3>
+                    <p>Hot springs and flamingoes</p>
+                </div>
+            </div>
+            <div class="dest-card">
+                <img src="attachments/lake elementaita.jpg.jpeg" alt="Lake Elementaita">
+                <div class="dest-info">
+                    <h3>LAKE ELEMENTAITA</h3>
+                    <p>Peaceful soda lake & scenic beauty</p>
+                </div>
+            </div>
+            <div class="dest-card">
+                <img src="attachments/mt longonot.jpg.jpeg" alt="Mount Longonot">
+                <div class="dest-info">
+                    <h3>MOUNT LONGONOT</h3>
+                    <p>Volcano hike with breathtaking crater views</p>
+                </div>
+            </div>
+            <div class="dest-card">
+                <img src="attachments/lake-nakuru.jpg.jpeg" alt="Lake Nakuru">
+                <div class="dest-info">
+                    <h3>LAKE NAKURU</h3>
+                    <p>Rhinos, flamingos & unforgettable game drives</p>
+                </div>
+            </div>
+            <div class="dest-card">
+                <img src="attachments/lord egerton castle.jpg.jpeg.jpeg" alt="Lord Egerton Castle">
+                <div class="dest-info">
+                    <h3>LORD EGERTON CASTLE</h3>
+                    <p>Historic fortress with a legendary story</p>
+                </div>
+            </div>
+            <div class="dest-card">
+                <img src="attachments/lake naivasha.jpg.jpeg        " alt="Lake Naivasha">
+                <div class="dest-info">
+                    <h3>LAKE NAIVASHA</h3>
+                    <p>Stunning fresh water lake with hippos and birdlife and nearby hellsgate national park</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <h2 class="section-title">ADVENTURE GALLERY</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="gallery/gallery01.jpg" alt="Gallery Image 1">
+            </div>
+            <div class="gallery-item">
+                <img src="gallery/gallery02.jpg" alt="Gallery Image 2">
+            </div>
+            <div class="gallery-item">
+                <img src="attachments/gallery3.jpg" alt="Gallery Image 3">
+            </div>
+            <div class="gallery-item">
+                <img src="attachments/gallery4.jpg" alt="Gallery Image 4">
+            </div>
+            <div class="gallery-item">
+                <img src="attachments/gallery5.jpg" alt="Gallery Image 5">
+            </div>
+            <div class="gallery-item">
+                <img src="attachments/gallery6.jpg" alt="Gallery Image 6">
+            </div>  
+                <div class="gallery-item">
+                <img src="gallery/gallery7.jpg" alt="Gallery Image 7">
+            </div>
+                <div class="gallery-item">
+                <img src="gallery/gallery8.jpg" alt="Gallery Image 8">
+
+                </div>
+                <div class="gallery-item">
+                <img src="gallery/gallery9.jpg" alt="Gallery Image 9">
+                </div>
+                <div
+    
+    
+            class="gallery-item">
+                <img src="gallery/gallery10.jpg" alt="Gallery Image 10">
+                </div>
+                <div class="gallery-item">
+                <img src="gallery/gallery01.jpg" alt="Gallery Image 11">
+                </div>
+                <div class="gallery-item">
+                <img src="gallery/gallery02.jpg" alt="Gallery Image 12">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+
+    <section id="about" class="section">
+        <h2 class="section-title">ABOUT PANDA TOURS</h2>
+        <p style="max-width: 780px; margin: 0 auto; font-size: 1.1rem; text-align: center;">
+            We create unforgettable, youthful adventures across the Rift Valley. 
+            From hiking volcanoes to boat rides on ancient lakes and exploring historic castles — 
+            we bring energy, safety, and pure adventure to every trip.
+        </p>
+    </section>
+
+    <!-- Booking -->
+    <section id="book" class="section">
+        <h2 class="section-title">BOOK YOUR ADVENTURE</h2>
+        <form id="booking-form" style="max-width: 680px; margin: 0 auto; background: rgba(255,255,255,0.08); padding: 40px; border-radius: 18px;">
+            <input type="text" id="name" placeholder="Full Name" required 
+                   style="width:100%; padding:14px; margin:10px 0; border-radius:8px; border:none; font-size:1rem;">
+            <input type="email" id="email" placeholder="Email Address" required 
+                   style="width:100%; padding:14px; margin:10px 0; border-radius:8px; border:none; font-size:1rem;">
+            <select id="destination" required 
+                    style="width:100%; padding:14px; margin:10px 0; border-radius:8px; border:none; font-size:1rem;">
+                <option value="">Choose Destination...</option>
+                <option value="Lakes Baringo & Bogoria">Lakes Baringo & Bogoria</option>
+                <option value="Lake Naivasha">Lake Naivasha</option>
+                <option value="Mount Longonot">Mount Longonot</option>
+                <option value="Lake Nakuru">Lake Nakuru</option>
+                <option value="Lord Egerton Castle">Lord Egerton Castle</option>
+                <option value="Lake Elementaita">Lake Elementaita</option>
+            </select>
+            <button type="submit" class="btn-primary" style="width:100%; margin-top:20px; border:none; cursor:pointer;">
+                SEND TO WHATSAPP
+            </button>
+        </form>
+    </section>
+
+    <!-- Floating WhatsApp -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/254743363625" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const destination = document.getElementById('destination').value;
+            
+            const message = `Hello Panda Tours!%0A%0AI would like to book an adventure:%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Destination:* ${destination}`;
+            
+            window.open(`https://wa.me/254743363625?text=${message}`, '_blank');
+        });
+    </script>
+</body>
+</html>
